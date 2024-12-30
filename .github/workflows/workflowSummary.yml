@@ -24,7 +24,7 @@ jobs:
         run: ls -al pythonScripts
 
       - name: Generate Workflow Summary
-        run: python GitHubDemo/pythonScripts/generateSummary.py
+        run: python pythonScripts/generateSummary.py
 
       - name: Upload summary to GitHub
         env:
