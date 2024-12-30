@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -24,9 +26,9 @@ jobs:
         run: ls -al pythonScripts
 
       - name: Generate Workflow Summary
-        run: python pythonScripts/generateSummary.py
+        run: python3 pythonScripts/generateSummary.py
 
       - name: Upload summary to GitHub
-        env:
-          GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
-        run: echo "Result Summary :point_down:" >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo "Result Summary :point_down:" >> $GITHUB_STEP_SUMMARY
+          cat pythonScripts/workflow_summary.md >> $GITHUB_STEP_SUMMARY
