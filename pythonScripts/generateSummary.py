@@ -11,6 +11,6 @@ for _, row in df.iterrows():
     table.add_row(row.tolist())
 
 # Write the table to a Markdown file for GitHub Actions summary
-with open("workflow_summary.md", "w") as f:
+with open("pythonScripts/workflow_summary.md", "w") as f:
     f.write(f"## CSV Data Summary\n\n")
     f.write(f"```\n{table}\n```\n")
