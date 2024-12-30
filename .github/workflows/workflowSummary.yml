@@ -1,0 +1,35 @@
+name: Workflow-Summary
+on:
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas prettytable
+
+      - name: List files in the pythonScripts directory
+        run: ls -al pythonScripts
+
+      - name: Generate Workflow Summary
+        run: |
+          python3 pythonScripts/generateSummary.py
+
+      - name: Upload summary to GitHub
+        run: |
+          echo "Result Summary :point_down:" >> $GITHUB_STEP_SUMMARY
+          cat pythonScripts/workflow_summary.html >> $GITHUB_STEP_SUMMARY
