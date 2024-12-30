@@ -1,7 +1,7 @@
 import pandas as pd
 from prettytable import PrettyTable
 
-csv_file = "csvDataFiles/Results.csv"
+csv_file = "GitHubDemo/csvDataFiles/Results.csv"
 df = pd.read_csv(csv_file)
 
 table = PrettyTable()

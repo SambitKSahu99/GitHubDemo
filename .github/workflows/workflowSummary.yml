@@ -20,8 +20,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas prettytable
 
+      - name: List files in the pythonScripts directory
+        run: ls -al pythonScripts
+
       - name: Generate Workflow Summary
-        run: python pythonScripts/generateSummary.py
+        run: python GitHubDemo/pythonScripts/generateSummary.py
 
       - name: Upload summary to GitHub
         env:
