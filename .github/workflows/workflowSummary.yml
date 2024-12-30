@@ -26,9 +26,6 @@ jobs:
         run: ls -al pythonScripts
 
       - name: Generate Workflow Summary
-        run: python3 pythonScripts/generateSummary.py
-
-      - name: Upload summary to GitHub
         run: |
           echo "Result Summary :point_down:" >> $GITHUB_STEP_SUMMARY
-          cat pythonScripts/workflow_summary.md >> $GITHUB_STEP_SUMMARY
+          python3 pythonScripts/generateSummary.py
